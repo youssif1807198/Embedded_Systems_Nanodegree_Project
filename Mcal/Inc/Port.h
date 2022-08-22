@@ -2,58 +2,25 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  IntCtrl_Cfg.h
- *       Module:  -
+ *         File:  Port.h
+ *       Module:  Port
  *
- *  Description:  <Write File DESCRIPTION here>     
+ *  Description:  header file for Port Module    
  *  
  *********************************************************************************************************************/
-#ifndef INTCTRL_CFG_H
-#define INTCTRL_CFG_H
+#ifndef PORT_H
+#define PORT_H
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
+#include "Std_Types.h"
+#include "Port_Types.h"
 
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-
-
-/*
-//This field determines the split of group priority from subpriority
-//default split is bxxx
-.*/
-#define PRIGROUP_bxxx	ENABLE
-#define PRIGROUP_bxx_y  DISABLE 
-#define PRIGROUP_bx_yy  DISABLE
-#define PRIGROUP_b_yyy  DISABLE
-
-
-/*This configure exceptions priorities*/
-#define MEM_PRI			0
-#define BUS_PRI			0
-#define USAGE_PRI		0
-#define SVC_PRI			0
-#define DEBUG_PRI		0
-#define PENDSV_PRI	0
-#define TICK_PRI		0
-
-
-
-/*This configure exceptions ACTIVATION*/
-#define MEM		DISABLE
-#define BUS		DISABLE
-#define USAGE	DISABLE
-
-
-
-
-
-
-
-
 
 
 /**********************************************************************************************************************
@@ -66,9 +33,31 @@
  *********************************************************************************************************************/
 
 
+/**********************************************************************************************************************
+ *  GLOBAL DATA PROTOTYPES
+ *********************************************************************************************************************/
+
  
-#endif  /* INTCTRL_CFG_H */
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTION PROTOTYPES
+ *********************************************************************************************************************/
+ 
+/******************************************************************************
+* \Syntax          : void Port_Init(const Port_ConfigType* ConfigPtr)                                      
+* \Description     : function shall return the value of the
+*					 specified DIO channel.                                   
+*                                                                             
+* \Sync\Async      : Synchronous                                               
+* \Reentrancy      : Non Reentrant                                             
+* \Parameters (in) : ConfigPtr                      
+* \Parameters (out): None                                                      
+* \Return value:   : None
+*******************************************************************************/
+
+void Port_Init(const Port_ConfigType* ConfigPtr);
+ 
+#endif  /* PORT_H */
 
 /**********************************************************************************************************************
- *  END OF FILE: IntCtrl_Cfg.h
+ *  END OF FILE: Port.h
  *********************************************************************************************************************/

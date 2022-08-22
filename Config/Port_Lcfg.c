@@ -1,7 +1,7 @@
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  IntCtrl_Lcfg.c
+/**        \file  Port_Lcfg.c
  *        \brief  
  *
  *      \details  
@@ -13,6 +13,7 @@
  *  INCLUDES
  *********************************************************************************************************************/
 #include "Std_Types.h"
+#include "Port_Types.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -28,22 +29,13 @@
  *  GLOBAL DATA
  *********************************************************************************************************************/
 /**/
+Port_ConfigType ConfigType[3];
 
 
 
-
-/*FILL THIS ARRAY OF STRUCT TYPE BY BOTH PRIORITY AND SUBPRIORTY IN THE LOCATION CORRSOPONDING TO THE INTERRUPT NUMBER  */
-uint8 INT_PRIORITY[138]={0};
-
-
-/**/
-/*SET interrupt types that you want to activate BY ///1/// IN THE LOCATION CORRSOPONDING TO THE INTERRUPT NUMBER
-BY DEFAULT INTERRUPTS IS DISABLES 
-*/
-uint8 INT_EN[138]={0};
 
 
 
 /**********************************************************************************************************************
- *  END OF FILE: IntCtrl_Lcfg.c
+ *  END OF FILE: Port_Lcfg.c
  *********************************************************************************************************************/

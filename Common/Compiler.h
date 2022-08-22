@@ -2,14 +2,14 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  IntCtrl_Cfg.h
+ *         File:  Compiler.h
  *       Module:  -
  *
- *  Description:  <Write File DESCRIPTION here>     
+ *  Description:  Contains Compiler Dependent MACRO Definition     
  *  
  *********************************************************************************************************************/
-#ifndef INTCTRL_CFG_H
-#define INTCTRL_CFG_H
+#ifndef COMPILER_H
+#define COMPILER_H
 
 /**********************************************************************************************************************
  * INCLUDES
@@ -19,42 +19,16 @@
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
+/* NULL_PTR define with a void pointer to zero definition*/
+#define NULL_PTR       ((void *)0)
 
+/* INLINE  define for abstraction of the keyword inline*/
+#define INLINE         inline
 
-/*
-//This field determines the split of group priority from subpriority
-//default split is bxxx
-.*/
-#define PRIGROUP_bxxx	ENABLE
-#define PRIGROUP_bxx_y  DISABLE 
-#define PRIGROUP_bx_yy  DISABLE
-#define PRIGROUP_b_yyy  DISABLE
-
-
-/*This configure exceptions priorities*/
-#define MEM_PRI			0
-#define BUS_PRI			0
-#define USAGE_PRI		0
-#define SVC_PRI			0
-#define DEBUG_PRI		0
-#define PENDSV_PRI	0
-#define TICK_PRI		0
-
-
-
-/*This configure exceptions ACTIVATION*/
-#define MEM		DISABLE
-#define BUS		DISABLE
-#define USAGE	DISABLE
-
-
-
-
-
-
-
-
-
+/* LOCAL_INLINE define for abstraction of the keyword inline in functions with "static" scope.
+   Different compilers may require a different sequence of the keywords "static" and "inline" 
+   if this is supported at all. */
+#define LOCAL_INLINE   static inline
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -66,9 +40,18 @@
  *********************************************************************************************************************/
 
 
+/**********************************************************************************************************************
+ *  GLOBAL DATA PROTOTYPES
+ *********************************************************************************************************************/
+
  
-#endif  /* INTCTRL_CFG_H */
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTION PROTOTYPES
+ *********************************************************************************************************************/
+
+ 
+#endif  /* COMPILER_H */
 
 /**********************************************************************************************************************
- *  END OF FILE: IntCtrl_Cfg.h
+ *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/

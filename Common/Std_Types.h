@@ -1,74 +1,58 @@
 /**********************************************************************************************************************
-
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  IntCtrl_Cfg.h
+ *         File:  Std_Types.h
+ *    Component:  -
  *       Module:  -
  *
- *  Description:  <Write File DESCRIPTION here>     
- *  
+ *  Description:  Provision of Standard Types
+ *
  *********************************************************************************************************************/
-#ifndef INTCTRL_CFG_H
-#define INTCTRL_CFG_H
+
+
+
+#ifndef STD_TYPES_H
+#define STD_TYPES_H
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
 
+# include "Platform_Types.h"
+# include "Compiler.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
 
+# define STD_HIGH     1u /* Physical state 5V or 3.3V */
+# define STD_LOW      0u /* Physical state 0V */
 
-/*
-//This field determines the split of group priority from subpriority
-//default split is bxxx
-.*/
-#define PRIGROUP_bxxx	ENABLE
-#define PRIGROUP_bxx_y  DISABLE 
-#define PRIGROUP_bx_yy  DISABLE
-#define PRIGROUP_b_yyy  DISABLE
+# define STD_ACTIVE   1u /* Logical state active */
+# define STD_IDLE     0u /* Logical state idle */
 
-
-/*This configure exceptions priorities*/
-#define MEM_PRI			0
-#define BUS_PRI			0
-#define USAGE_PRI		0
-#define SVC_PRI			0
-#define DEBUG_PRI		0
-#define PENDSV_PRI	0
-#define TICK_PRI		0
-
-
-
-/*This configure exceptions ACTIVATION*/
-#define MEM		DISABLE
-#define BUS		DISABLE
-#define USAGE	DISABLE
-
-
-
-
-
-
-
-
-
-
-/**********************************************************************************************************************
- *  GLOBAL FUNCTION MACROS
- *********************************************************************************************************************/
-
+# define STD_ON       1u
+# define STD_OFF      0u
 
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
 
-
- 
-#endif  /* INTCTRL_CFG_H */
+typedef uint8 Std_ReturnType;
+#define E_OK          0u
+#define E_NOT_OK      1u
 
 /**********************************************************************************************************************
- *  END OF FILE: IntCtrl_Cfg.h
+ *  GLOBAL DATA PROTOTYPES
+ *********************************************************************************************************************/
+
+ 
+/**********************************************************************************************************************
+ *  GLOBAL FUNCTION PROTOTYPES
+ *********************************************************************************************************************/
+
+
+#endif /* STD_TYPES_H */
+/**********************************************************************************************************************
+ *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/

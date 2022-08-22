@@ -2,14 +2,14 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  IntCtrl_Cfg.h
+ *         File:  Port_Cfg.h
  *       Module:  -
  *
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef INTCTRL_CFG_H
-#define INTCTRL_CFG_H
+#ifndef PORT_CFG_H
+#define PORT_CFG_H
 
 /**********************************************************************************************************************
  * INCLUDES
@@ -20,32 +20,6 @@
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
 
-
-/*
-//This field determines the split of group priority from subpriority
-//default split is bxxx
-.*/
-#define PRIGROUP_bxxx	ENABLE
-#define PRIGROUP_bxx_y  DISABLE 
-#define PRIGROUP_bx_yy  DISABLE
-#define PRIGROUP_b_yyy  DISABLE
-
-
-/*This configure exceptions priorities*/
-#define MEM_PRI			0
-#define BUS_PRI			0
-#define USAGE_PRI		0
-#define SVC_PRI			0
-#define DEBUG_PRI		0
-#define PENDSV_PRI	0
-#define TICK_PRI		0
-
-
-
-/*This configure exceptions ACTIVATION*/
-#define MEM		DISABLE
-#define BUS		DISABLE
-#define USAGE	DISABLE
 
 
 
@@ -67,8 +41,8 @@
 
 
  
-#endif  /* INTCTRL_CFG_H */
+#endif  /* PORT_CFG_H */
 
 /**********************************************************************************************************************
- *  END OF FILE: IntCtrl_Cfg.h
+ *  END OF FILE: Port_Cfg.h
  *********************************************************************************************************************/

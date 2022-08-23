@@ -151,6 +151,7 @@ void Dio_WriteChannel( Dio_ChannelType ChannelId, Dio_LevelType Level )
 		break;
 
 		case 5:
+			
 		*(	(volatile uint32 *)	(GPIODATA_PORTF_BASE_ADDRESS+ (0x4<<	(ChannelId %8))	)	)	=	Level;
 		break;		
 	

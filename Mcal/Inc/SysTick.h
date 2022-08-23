@@ -41,7 +41,13 @@
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
  
+ void SysTick_Init(void);
+ void StartTimer(uint8 Copy_ON_Time,uint8 Copy_OFF_Time);
+ void Systick_EnableNotification( void (*LED_ON_Notification)(void),void (*LED_OFF_Notification)(void));
  
+
+
+
  
  
  

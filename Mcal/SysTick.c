@@ -28,9 +28,20 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
+
+
+void (*LED_ON_callback)(void);
+void (*LED_OFF_callback)(void);
+
 uint8 ON_Time=0;
+uint8 OverFlow_ON=0;
+uint8 ON=0;
+
+
+
 uint8 OFF_Time=0;
-uint8 OverFlow=0;
+uint8 OverFlow_OFF=0;
+uint8 OFF=2;
 
 /*****************************/
 
@@ -48,10 +59,10 @@ uint8 OverFlow=0;
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 
-void SysTick_Init(uint8 Sec)
+void SysTick_Init(void)
 {
 	/*DISABLE COUNTER*/
-	CLEAR_BIT_BIT(SYSTICK_STCTRL_R,0);
+	CLEAR_BIT(SYSTICK_STCTRL_R,0);
 	
 	
 	
@@ -70,80 +81,86 @@ void SysTick_Init(uint8 Sec)
 
 
 
-void StartTimer(uint8 ON_Time,uint8 OFF_Time,)
+void StartTimer(uint8 Copy_ON_Time,uint8 Copy_OFF_Time)
 {
-	TotalSecs=sec;
+
+	ON_Time=Copy_ON_Time;
+	OFF_Time=Copy_OFF_Time;
+
+
 	
 	SYSTICK_STRELOAD_R=15999999;
-	
+	SYSTICK_STCURRENT_R=0;
+
 	/*ENABLE COUNTER*/
 	SET_BIT(SYSTICK_STCTRL_R,0);
+
+	/*SET ACTIVE STATUS OF INTERRUPT*/
+//	SET_BIT(SYS_CTRL,11);
+
+	
 	
 }
 
 
 
 
+
+void Systick_EnableNotification( void (*LED_ON_Notification)(void),void (*LED_OFF_Notification)(void))
+{
+	LED_ON_callback=LED_ON_Notification;
+	LED_OFF_callback=LED_OFF_Notification;
+	
+	
+	
+}
+
+
 void SysTick_Handler (void)
 {
 	//clear flags
-	SET_BIT(SYS_CTRL,11);
+//	CLEAR_BIT(SYS_CTRL,11);
 
 	
-	if(ON_Time>=OverFlow && ON==0)
+	if(ON_Time>OverFlow_ON && ON==0)
 	{
-		LED_ON_callback
-	
-	OverFlow++;
-	ON=1;
+		LED_ON_callback();
+		OverFlow_ON++;
+		ON=1;
 	}
-	else if(ON_Time>=OverFlow && ON=1)
+ else if(ON_Time>OverFlow_ON && ON==1)
 	{
-		OverFlow++;
+		if((++OverFlow_ON)==ON_Time)
+		{
+			OverFlow_ON=0;
+			ON=2;
+			OFF=0;
+			
+			
+		}
 			
 	}
-	
-	
-	
-	else
+
+	if(OFF_Time>OverFlow_OFF && OFF==0)
 	{
-		ON==2;
-		OverFlow=0;
-		isr_on_callback;
-		OFF==0;
-	
-		
+		LED_OFF_callback();
+		OverFlow_OFF++;
+		OFF=1;
 	}
 	
-	
-	if(OFF_Time>=OverFlow && ON==0)
+	else if(OFF_Time>OverFlow_OFF && OFF==1)
 	{
-		LED_ON_callback
-	
-	OverFlow++;
-	ON=1;
-	}
-	else if(ON_Time>=OverFlow && ON=1)
-	{
-		OverFlow++;
+		if((++OverFlow_OFF)==OFF_Time)
+		{
+			OverFlow_OFF=0;
+			OFF=2;
+			ON=0;
 			
-	}
-	
-	
-	
-	else{
-		ON==2;
-		OverFlow=0;
-		isr_on_callback;
-		OFF==0;
-	
-		
+			
+		}
+			
 	}	
-	
-	
-	
 		
-	
 	
 	
 }

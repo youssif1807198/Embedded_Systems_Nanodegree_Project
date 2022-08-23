@@ -1,10 +1,10 @@
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  Timer.c
- *        \brief  Digital input/output Driver
+/**        \file  SysTick.c
+ *        \brief  SysTick Driver
  *
- *      \details  The Driver Provide APIs to deal with Timer 
+ *      \details  The Driver Provide SysTick Api
  *                
  *
  *********************************************************************************************************************/
@@ -13,10 +13,9 @@
  *  INCLUDES
  *********************************************************************************************************************/
 #include "Std_Types.h"
-#include "Timer.h"
+#include "Systick.h"
 #include "Mcu_Hw.h"
 #include "BITMATH.h"
-#include "Timer_Types.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -29,6 +28,9 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
+uint8 ON_Time=0;
+uint8 OFF_Time=0;
+uint8 OverFlow=0;
 
 /*****************************/
 
@@ -46,23 +48,113 @@
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
 
+void SysTick_Init(uint8 Sec)
+{
+	/*DISABLE COUNTER*/
+	CLEAR_BIT_BIT(SYSTICK_STCTRL_R,0);
+	
+	
+	
+//	SYSTICK_STRELOAD_R=15999999;
 
-/******************************************************************************
-* \Syntax          : Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId)                                      
-* \Description     : function shall return the value of the
-*					 specified DIO channel.                                   
-*                                                                             
-* \Sync\Async      : Synchronous                                               
-* \Reentrancy      : Reentrant                                             
-* \Parameters (in) : ChannelId                      
-* \Parameters (out): None                                                      
-* \Return value:   : Dio_LevelType
-*******************************************************************************/
+	/*USE SYSTCLK*/
+	SET_BIT(SYSTICK_STCTRL_R,2);
+	/*ENABLE INTERRUPT*/
+	SET_BIT(SYSTICK_STCTRL_R,1);
+	
+
 	
 	
 	
+}
+
+
+
+void StartTimer(uint8 ON_Time,uint8 OFF_Time,)
+{
+	TotalSecs=sec;
 	
+	SYSTICK_STRELOAD_R=15999999;
+	
+	/*ENABLE COUNTER*/
+	SET_BIT(SYSTICK_STCTRL_R,0);
+	
+}
+
+
+
+
+void SysTick_Handler (void)
+{
+	//clear flags
+	SET_BIT(SYS_CTRL,11);
+
+	
+	if(ON_Time>=OverFlow && ON==0)
+	{
+		LED_ON_callback
+	
+	OverFlow++;
+	ON=1;
+	}
+	else if(ON_Time>=OverFlow && ON=1)
+	{
+		OverFlow++;
+			
+	}
+	
+	
+	
+	else
+	{
+		ON==2;
+		OverFlow=0;
+		isr_on_callback;
+		OFF==0;
+	
+		
+	}
+	
+	
+	if(OFF_Time>=OverFlow && ON==0)
+	{
+		LED_ON_callback
+	
+	OverFlow++;
+	ON=1;
+	}
+	else if(ON_Time>=OverFlow && ON=1)
+	{
+		OverFlow++;
+			
+	}
+	
+	
+	
+	else{
+		ON==2;
+		OverFlow=0;
+		isr_on_callback;
+		OFF==0;
+	
+		
+	}	
+	
+	
+	
+		
+	
+	
+	
+}
+
+
+
+
+
+
+
 
 /**********************************************************************************************************************
- *  END OF FILE: Timer.c
-*********************************************************************************************************************/
+ *  END OF FILE: SysTick.c
+ *********************************************************************************************************************/

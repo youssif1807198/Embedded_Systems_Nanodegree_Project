@@ -146,6 +146,13 @@ typedef union
 #define SYSCTL_RCGCGPIO_R       (*((volatile unsigned long *)0x400FE608))
 #define SYSCTL_PRGPIO_R         (*((volatile unsigned long *)0x400FEA08))
 
+#define SYSCTL_RCGCTIMER_R       (*((volatile unsigned long *)0x400FE604))
+#define SYSCTL_PRTIMER_R         (*((volatile unsigned long *)0x400FEA04))
+
+
+
+
+
 #define GPIODATA_PORTA_BASE_ADDRESS				 0x40004000
 #define GPIODATA_PORTB_BASE_ADDRESS				 0x40005000
 #define GPIODATA_PORTC_BASE_ADDRESS				 0x40006000
@@ -167,6 +174,36 @@ typedef union
 #define	GPIODR4R_Offest		0x504
 #define	GPIODR8R_Offest		0x508
 #define	GPIOIM_Offest		0x410
+
+
+#define TIMER_0_BASE_ADDRESS				 0x40030000
+#define TIMER_1_BASE_ADDRESS				 0x40031000
+#define TIMER_2_BASE_ADDRESS				 0x40032000
+#define TIMER_3_BASE_ADDRESS				 0x40033000
+#define TIMER_4_BASE_ADDRESS				 0x40034000
+#define TIMER_5_BASE_ADDRESS				 0x40035000
+
+
+
+
+#define	GPTMTAMR_Offest			0x004
+#define	GPTMCTL_Offest			0x00C
+#define	GPTMCTL_Offest			0x000
+#define	GPTMTAILR_Offest		0x028
+#define	GPTMIMR_Offest			0x018
+
+#define SYSTICK_STCTRL_R       		(*((volatile unsigned long *)0xE000E010))
+#define SYSTICK_STRELOAD_R       	(*((volatile unsigned long *)0xE000E014))
+#define SYSTICK_STCURRENT_R       	(*((volatile unsigned long *)0xE000E018))
+
+
+
+
+
+
+
+
+
 
 
 
